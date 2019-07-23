@@ -1,0 +1,823 @@
+{
+	"variables": [],
+	"info": {
+		"name": "klite_server",
+		"_postman_id": "26933aff-1e5e-ffa4-3a80-fdb49e00d7fe",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "获取音频自定义分类列表",
+			"request": {
+				"url": "{{url}}/api/v1/voice/get/category/",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Token {{access_token}}",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "查询分类下专辑信息",
+			"request": {
+				"url": {
+					"raw": "{{url}}/api/v1/voice/get/album/?category=儿歌&num=0&size=1",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"voice",
+						"get",
+						"album",
+						""
+					],
+					"query": [
+						{
+							"key": "category",
+							"value": "儿歌",
+							"equals": true,
+							"description": ""
+						},
+						{
+							"key": "num",
+							"value": "0",
+							"equals": true,
+							"description": ""
+						},
+						{
+							"key": "size",
+							"value": "1",
+							"equals": true,
+							"description": ""
+						}
+					],
+					"variable": []
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Token {{access_token}}",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "查询专辑下音频列表",
+			"request": {
+				"url": {
+					"raw": "{{url}}/api/v1/voice/get/audio/?album_id=26151935&num=0&size=2",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"voice",
+						"get",
+						"audio",
+						""
+					],
+					"query": [
+						{
+							"key": "album_id",
+							"value": "26151935",
+							"equals": true,
+							"description": ""
+						},
+						{
+							"key": "num",
+							"value": "0",
+							"equals": true,
+							"description": ""
+						},
+						{
+							"key": "size",
+							"value": "2",
+							"equals": true,
+							"description": ""
+						}
+					],
+					"variable": []
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Token {{access_token}}",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "添加单个或多个音频到播放列表",
+			"request": {
+				"url": "{{url}}/api/v1/voice/add/audio/",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "Token {{access_token}}",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"album_id\": 29314072,\n\t\"iot_id\": \"1234qwer\",\n\t\"audio\": [\n\t\t{\n\t\t\t\"content_id\":\"312696006\",\n\t\t\t\"content_type\": \"program\",\n\t\t\t\"content_source\": \"generic_content\",\n\t\t\t\"content_title\": \"窃读记\",\n\t\t\t\"content_duration\": 293\n\t\t}\n\t]\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "添加整个专辑到播放列表",
+			"request": {
+				"url": "{{url}}/api/v1/voice/add/album/",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "Token {{access_token}}",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"album_id\": 26151935,\n\t\"iot_id\": \"1234qwer\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "从播放列表移除单个/多个音频",
+			"request": {
+				"url": "{{url}}/api/v1/voice/remove/audio/",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "Token {{access_token}}",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"iot_id\": \"1234qwer\",\n\t\"contents_id\": [\"8424405\", \"8419661\"]\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "移除全部播放列表",
+			"request": {
+				"url": "{{url}}/api/v1/voice/remove/allaudio/",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "Token {{access_token}}",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"iot_id\": \"1234qwer\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "床头灯控制设备点播歌曲",
+			"request": {
+				"url": "{{url}}/api/v1/voice/play/audio/",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "Token {{access_token}}",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"iot_id\": \"1234qwer\",\n\t\"content_id\": \"312695005\",\n\t\"content_type\": \"program\",\n\t\"content_source\": \"generic_content\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "床头灯设备控制播放或暂停",
+			"request": {
+				"url": "{{url}}/api/v1/voice/play/pauseandresume/",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "Token {{access_token}}",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"iot_id\":\"1234qwer\",\n\t\"play_flag\": 1\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "获取床头灯设备播放列表",
+			"request": {
+				"url": {
+					"raw": "{{url}}/api/v1/voice/get/playlist/?iot_id=1234qwer&num=1&size=2",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"voice",
+						"get",
+						"playlist",
+						""
+					],
+					"query": [
+						{
+							"key": "iot_id",
+							"value": "1234qwer",
+							"equals": true,
+							"description": ""
+						},
+						{
+							"key": "num",
+							"value": "1",
+							"equals": true,
+							"description": ""
+						},
+						{
+							"key": "size",
+							"value": "2",
+							"equals": true,
+							"description": ""
+						}
+					],
+					"variable": []
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Token {{access_token}}",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "获取本周学习时长统计",
+			"request": {
+				"url": {
+					"raw": "{{url}}/api/v1/analysis/study/at/week/?iot_id=1234qwer&face_id=1",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"analysis",
+						"study",
+						"at",
+						"week",
+						""
+					],
+					"query": [
+						{
+							"key": "iot_id",
+							"value": "1234qwer",
+							"equals": true,
+							"description": ""
+						},
+						{
+							"key": "face_id",
+							"value": "1",
+							"equals": true,
+							"description": ""
+						}
+					],
+					"variable": []
+				},
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "获取学习分析数据",
+			"request": {
+				"url": {
+					"raw": "{{url}}/api/v1/analysis/study/statistics/?iot_id=a0vEczTLBkslOfnkRboe000100&face_id=1",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"analysis",
+						"study",
+						"statistics",
+						""
+					],
+					"query": [
+						{
+							"key": "iot_id",
+							"value": "a0vEczTLBkslOfnkRboe000100",
+							"equals": true,
+							"description": ""
+						},
+						{
+							"key": "face_id",
+							"value": "1",
+							"equals": true,
+							"description": ""
+						}
+					],
+					"variable": []
+				},
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "微信分享页获取学习分析数据",
+			"request": {
+				"url": {
+					"raw": "{{url}}/api/v1/analysis/open/data/?child_key=00d380cd4d8760ac&create_at=20190613",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"analysis",
+						"open",
+						"data",
+						""
+					],
+					"query": [
+						{
+							"key": "child_key",
+							"value": "00d380cd4d8760ac",
+							"equals": true,
+							"description": ""
+						},
+						{
+							"key": "create_at",
+							"value": "20190613",
+							"equals": true,
+							"description": ""
+						}
+					],
+					"variable": []
+				},
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "获取oss 上传文件凭证",
+			"request": {
+				"url": "{{url}}/api/v1/voice/get/osstoken/",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Token {{access_token}}",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "录音音频转码",
+			"request": {
+				"url": "{{url}}/api/v1/voice/transcode/",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"input_url\": \"1.wav\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "本周学习时长统计",
+			"request": {
+				"url": {
+					"raw": "{{url}}/api/v1/analysis/study/at/week/?iot_id=a0vEczTLBkslOfnkRboe000100&face_id=1",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"analysis",
+						"study",
+						"at",
+						"week",
+						""
+					],
+					"query": [
+						{
+							"key": "iot_id",
+							"value": "a0vEczTLBkslOfnkRboe000100",
+							"equals": true,
+							"description": ""
+						},
+						{
+							"key": "face_id",
+							"value": "1",
+							"equals": true,
+							"description": ""
+						}
+					],
+					"variable": []
+				},
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "app内获取学习数据",
+			"request": {
+				"url": {
+					"raw": "{{url}}/api/v1/analysis/study/statistics/?iot_id=a0vEczTLBkslOfnkRboe000100&face_id=1",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"analysis",
+						"study",
+						"statistics",
+						""
+					],
+					"query": [
+						{
+							"key": "iot_id",
+							"value": "a0vEczTLBkslOfnkRboe000100",
+							"equals": true,
+							"description": ""
+						},
+						{
+							"key": "face_id",
+							"value": "1",
+							"equals": true,
+							"description": ""
+						}
+					],
+					"variable": []
+				},
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "微信分享页面获取学习数据",
+			"request": {
+				"url": {
+					"raw": "{{url}}/api/v1/analysis/open/data/?key=5d1ef3185a076d05468d1096&create_at=1562281200&tzone=+,8,00",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"analysis",
+						"open",
+						"data",
+						""
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "5d1ef3185a076d05468d1096",
+							"equals": true,
+							"description": ""
+						},
+						{
+							"key": "create_at",
+							"value": "1562281200",
+							"equals": true,
+							"description": ""
+						},
+						{
+							"key": "tzone",
+							"value": "+,8,00",
+							"equals": true,
+							"description": ""
+						}
+					],
+					"variable": []
+				},
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "台灯升级版查询一周使用时长",
+			"request": {
+				"url": {
+					"raw": "{{url}}/api/v1/analysis/use/at/week/?iot_id=a0vEczTLBkslOfnkRboe000100",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"analysis",
+						"use",
+						"at",
+						"week",
+						""
+					],
+					"query": [
+						{
+							"key": "iot_id",
+							"value": "a0vEczTLBkslOfnkRboe000100",
+							"equals": true,
+							"description": ""
+						}
+					],
+					"variable": []
+				},
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "创建面板路径",
+			"request": {
+				"url": "{{url}}/api/panel/update/",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"accessKey\": \"mxchip\",\r\n    \"secretKey\": \"f7f5f959-8b1e-4869-b6ef-b9510c7de7a4\",\r\n    \"data\": {\r\n    \"Items\": [\r\n        {\r\n        \"aws:rep:deleting\": false,\r\n        \"packageVersion\": \"0.1.6\",\r\n        \"packageURL_iOS\": \"https://panel.app.ha.mxchip.com/panel/201907081918/Device_BedLamp_KLite_TL008_iOS.zip\",\r\n        \"createdAt\": \"2019-06-17T07:06:42.770Z\",\r\n        \"aws:rep:updateregion\": \"ap-northeast-1\",\r\n        \"aws:rep:updatetime\": 1562584975.935001,\r\n        \"packageName\": \"Device_BedLamp_KLite_TL008\",\r\n        \"packageURL_Android\": \"https://panel.app.ha.mxchip.com/panel/201907081918/Device_BedLamp_KLite_TL008_Android.zip\",\r\n        \"key\": \"device_bedlamp_klite_tl008\",\r\n        \"type\": \"package@Bijiabo\"\r\n        },\r\n        {\r\n        \"aws:rep:deleting\": false,\r\n        \"packageVersion\": \"1.0.12\",\r\n        \"packageURL_iOS\": \"https://panel.app.ha.mxchip.com/panel/201907081903/Device_TableLamp_KLite_TL007P_iOS.zip\",\r\n        \"createdAt\": \"2019-06-24T02:19:21.116Z\",\r\n        \"aws:rep:updateregion\": \"ap-northeast-1\",\r\n        \"aws:rep:updatetime\": 1562583933.674001,\r\n        \"packageName\": \"Device_TableLamp_KLite_TL007P\",\r\n        \"packageURL_Android\": \"https://panel.app.ha.mxchip.com/panel/201907081903/Device_TableLamp_KLite_TL007P_Android.zip\",\r\n        \"key\": \"device_tablelamp_klite_tl007p\",\r\n        \"type\": \"package@Bijiabo\"\r\n        }\r\n    ],\r\n    \"Count\": 2,\r\n    \"ScannedCount\": 2\r\n    }\r\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "查询面板路径",
+			"request": {
+				"url": {
+					"raw": "47.103.86.196/api/panel/list/?accessKey=mxchip",
+					"host": [
+						"47",
+						"103",
+						"86",
+						"196"
+					],
+					"path": [
+						"api",
+						"panel",
+						"list",
+						""
+					],
+					"query": [
+						{
+							"key": "accessKey",
+							"value": "mxchip",
+							"equals": true,
+							"description": ""
+						}
+					],
+					"variable": []
+				},
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "查询自定义模型信息列表",
+			"request": {
+				"url": {
+					"raw": "{{url}}/api/model/list/?iot_id=1234qwer",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"model",
+						"list",
+						""
+					],
+					"query": [
+						{
+							"key": "iot_id",
+							"value": "1234qwer",
+							"equals": true,
+							"description": ""
+						}
+					],
+					"variable": []
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "token {{access_token}}",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "添加自定义模型信息",
+			"request": {
+				"url": {
+					"raw": "{{url}}/api/model/create/",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"model",
+						"create",
+						""
+					],
+					"query": [
+						{
+							"key": "iot_id",
+							"value": "1234qwer",
+							"equals": true,
+							"description": "",
+							"disabled": true
+						}
+					],
+					"variable": []
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "token {{access_token}}",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"iot_id\": \"1234qwer\",\n\t\"model_msg\": {\"test4\":123}\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "更新自定义模型信息",
+			"request": {
+				"url": "{{url}}/api/model/69726820862242852/update/",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "token {{access_token}}",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"model_msg\": {\"test1\": \"ok\"}\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "自定义模式信息删除",
+			"request": {
+				"url": "{{url}}/api/model/69728574949725154/delete/",
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "token {{access_token}}",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}

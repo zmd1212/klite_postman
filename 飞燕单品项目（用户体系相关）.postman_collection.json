@@ -1,0 +1,789 @@
+{
+	"id": "86c66170-4a74-cbef-d218-1bdb20c50e72",
+	"name": "飞燕单品项目",
+	"description": "飞燕单品项目",
+	"order": [
+		"9976f20b-5a36-71d8-1fcc-f4c896a08f56",
+		"164954cc-aaed-2b1a-04e8-0e00a0e7d8ae",
+		"4a3d7868-dcc9-a8e5-cdb7-ebbed9b2a93f",
+		"73260708-cc88-b563-75be-ea406481cdad",
+		"f061fb5d-6c37-1142-bd8f-2e10f44e3c9a",
+		"1909252c-563d-07d5-9c12-082e79bfcc8a",
+		"9f1284fc-5c79-c744-2759-8afdec1f4739",
+		"6a0989bf-2f44-8527-decd-dc056b873122",
+		"9c6ebcc6-2f82-fdeb-c9c4-78685954da9d",
+		"754f2e85-07d3-2450-e3ff-24b2e2910f84",
+		"235ff47b-67f2-1ec8-e71b-a5c88ca66e0d",
+		"91f5bd82-2424-b0f3-b0f9-c97c7948c948",
+		"c5616aae-69a1-a83e-7402-00aebc080d75",
+		"84d115c8-bf57-e9cf-e277-8b0a6626db37",
+		"422d16f6-e1ef-02ac-c5d9-1378daed693d",
+		"cc9a676a-b70b-af1e-552e-bb2d50ba9463"
+	],
+	"folders": [],
+	"folders_order": [],
+	"timestamp": 0,
+	"owner": "1225536",
+	"public": false,
+	"events": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "66f9235e-0157-4304-8324-e281517aa300",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "3459ed1b-6aa0-4f0d-8508-a6058d1c7af7",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variables": null,
+	"auth": null,
+	"requests": [
+		{
+			"folder": null,
+			"id": "164954cc-aaed-2b1a-04e8-0e00a0e7d8ae",
+			"name": "发送验证码_account中有空格",
+			"dataMode": "params",
+			"data": [
+				{
+					"key": "account",
+					"value": " ",
+					"type": "text"
+				},
+				{
+					"key": "appid",
+					"value": "{{appid}}",
+					"type": "text"
+				},
+				{
+					"key": "area",
+					"value": "86",
+					"type": "text"
+				},
+				{
+					"key": "flag",
+					"value": "1",
+					"type": "text"
+				}
+			],
+			"auth": null,
+			"events": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "54fb1699-0809-481b-826a-3b3b4dc921de",
+						"type": "text/javascript",
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"",
+							"tests[\"Return code value: \"+ jsonData.code] = jsonData.code === 10022"
+						]
+					}
+				}
+			],
+			"rawModeData": "",
+			"descriptionFormat": null,
+			"description": "发送验证码_account中有空格",
+			"variables": null,
+			"headers": "Content-Type: application/json\n: ",
+			"method": "POST",
+			"pathVariables": {},
+			"url": "{{url}}/api/send_code",
+			"queryParams": [],
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json"
+				},
+				{
+					"key": "",
+					"value": ""
+				}
+			],
+			"pathVariableData": [],
+			"collectionId": "86c66170-4a74-cbef-d218-1bdb20c50e72",
+			"preRequestScript": null,
+			"tests": "var jsonData = JSON.parse(responseBody);\n\ntests[\"Return code value: \"+ jsonData.code] = jsonData.code === 10022",
+			"currentHelper": null,
+			"helperAttributes": null
+		},
+		{
+			"folder": null,
+			"id": "1909252c-563d-07d5-9c12-082e79bfcc8a",
+			"name": "校验验证码",
+			"dataMode": "raw",
+			"data": [],
+			"auth": null,
+			"events": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "b49c6e42-400a-4362-8f95-17cb1dd937d9",
+						"type": "text/javascript",
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"",
+							"tests[\"Return code value: \"+ jsonData.code] = jsonData.code === 0"
+						]
+					}
+				}
+			],
+			"descriptionFormat": null,
+			"description": null,
+			"variables": null,
+			"headers": "Content-Type: application/json",
+			"method": "POST",
+			"pathVariables": {},
+			"url": "{{url}}/api/check_code",
+			"queryParams": [],
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json"
+				}
+			],
+			"pathVariableData": [],
+			"collectionId": "86c66170-4a74-cbef-d218-1bdb20c50e72",
+			"preRequestScript": null,
+			"tests": "var jsonData = JSON.parse(responseBody);\n\ntests[\"Return code value: \"+ jsonData.code] = jsonData.code === 0",
+			"currentHelper": null,
+			"helperAttributes": null,
+			"rawModeData": "{\n  \"account\":\"{{account}}\",\n  \"code\":\"837448\"\n}"
+		},
+		{
+			"folder": null,
+			"id": "235ff47b-67f2-1ec8-e71b-a5c88ca66e0d",
+			"name": "获取token(账号密码登陆)",
+			"dataMode": "raw",
+			"data": [],
+			"auth": null,
+			"events": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "9270d08c-9ffa-49c5-8d15-c5ae2839637e",
+						"type": "text/javascript",
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"postman.setEnvironmentVariable(\"access_token\",jsonData.data.access_token)",
+							"postman.setEnvironmentVariable(\"refresh_token\",jsonData.data.refresh_token)",
+							"",
+							"tests[\"Return code value: \"+ jsonData.code] = jsonData.code === 0"
+						]
+					}
+				}
+			],
+			"descriptionFormat": null,
+			"description": null,
+			"variables": null,
+			"headers": "Content-Type: application/json",
+			"method": "POST",
+			"pathVariables": {},
+			"url": "{{url}}/api/access_token",
+			"queryParams": [],
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json"
+				}
+			],
+			"pathVariableData": [],
+			"collectionId": "86c66170-4a74-cbef-d218-1bdb20c50e72",
+			"preRequestScript": null,
+			"tests": "var jsonData = JSON.parse(responseBody);\npostman.setEnvironmentVariable(\"access_token\",jsonData.data.access_token)\npostman.setEnvironmentVariable(\"refresh_token\",jsonData.data.refresh_token)\n\ntests[\"Return code value: \"+ jsonData.code] = jsonData.code === 0",
+			"currentHelper": null,
+			"helperAttributes": null,
+			"rawModeData": "{\n  \"account\":\"{{account}}\",\n  \"password\":\"123456\",\n  \"appid\":\"{{appid}}\"\n}"
+		},
+		{
+			"folder": null,
+			"id": "422d16f6-e1ef-02ac-c5d9-1378daed693d",
+			"name": "编辑用户信息",
+			"dataMode": "raw",
+			"data": [],
+			"auth": null,
+			"events": null,
+			"descriptionFormat": null,
+			"description": null,
+			"variables": null,
+			"headers": "Authorization: Token {{access_token}}\nContent-Type: application/json",
+			"method": "PUT",
+			"pathVariables": {},
+			"url": "{{url}}/api/user/info",
+			"queryParams": [],
+			"headerData": [
+				{
+					"key": "Authorization",
+					"value": "Token {{access_token}}"
+				},
+				{
+					"key": "Content-Type",
+					"value": "application/json"
+				}
+			],
+			"pathVariableData": [],
+			"collectionId": "86c66170-4a74-cbef-d218-1bdb20c50e72",
+			"currentHelper": null,
+			"helperAttributes": null,
+			"rawModeData": "{\n  \"birthday\":\"1994-12-04\",\n  \"sex\":1,\n  \"city\":\"上海\",\n  \"address\":\"上海市丰庄四村\",\n  \"username\":\"小红帅男\",\n  \"phone\":\"18239323189\",\n  \"email\":\"1498506865@qq.com\",\n  \"name\":\"李红帅\",\n  \"company\":\"庆科\",\n  \"job\":\"软件开发工程师\",\n  \"language\":\"zh\"\n}"
+		},
+		{
+			"folder": null,
+			"id": "4a3d7868-dcc9-a8e5-cdb7-ebbed9b2a93f",
+			"name": "发送验证码_所有参数为空_bug",
+			"dataMode": "params",
+			"data": [
+				{
+					"key": "account",
+					"value": "",
+					"type": "text"
+				},
+				{
+					"key": "appid",
+					"value": "",
+					"type": "text"
+				},
+				{
+					"key": "area",
+					"value": "",
+					"type": "text"
+				},
+				{
+					"key": "flag",
+					"value": "",
+					"type": "text"
+				}
+			],
+			"auth": null,
+			"events": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "5c2c50dd-a674-40c8-8d84-ce57862eddc1",
+						"type": "text/javascript",
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"",
+							"tests[\"Return code value: \"+ jsonData.code] = jsonData.code === 10022"
+						]
+					}
+				}
+			],
+			"rawModeData": "",
+			"descriptionFormat": null,
+			"description": "获取验证码",
+			"variables": null,
+			"headers": "Content-Type: application/json\n: ",
+			"method": "POST",
+			"pathVariables": {},
+			"url": "{{url}}/api/send_code",
+			"queryParams": [],
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json"
+				},
+				{
+					"key": "",
+					"value": ""
+				}
+			],
+			"pathVariableData": [],
+			"collectionId": "86c66170-4a74-cbef-d218-1bdb20c50e72",
+			"preRequestScript": null,
+			"tests": "var jsonData = JSON.parse(responseBody);\n\ntests[\"Return code value: \"+ jsonData.code] = jsonData.code === 10022",
+			"currentHelper": null,
+			"helperAttributes": null
+		},
+		{
+			"folder": null,
+			"id": "6a0989bf-2f44-8527-decd-dc056b873122",
+			"name": "校验验证码_无效的验证码",
+			"dataMode": "raw",
+			"data": [],
+			"auth": null,
+			"events": null,
+			"descriptionFormat": null,
+			"description": null,
+			"variables": null,
+			"headers": "Content-Type: application/json",
+			"method": "POST",
+			"pathVariables": {},
+			"url": "{{url}}/api/check_code",
+			"queryParams": [],
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json"
+				}
+			],
+			"pathVariableData": [],
+			"collectionId": "86c66170-4a74-cbef-d218-1bdb20c50e72",
+			"currentHelper": null,
+			"helperAttributes": null,
+			"rawModeData": "{\n  \"account\":\"{{account}}\",\n  \"code\":\"557359\"\n}"
+		},
+		{
+			"folder": null,
+			"id": "73260708-cc88-b563-75be-ea406481cdad",
+			"name": "发送验证码_flag=2修改密码",
+			"dataMode": "params",
+			"data": [
+				{
+					"key": "account",
+					"value": "{{account}}",
+					"type": "text"
+				},
+				{
+					"key": "appid",
+					"value": "{{appid}}",
+					"type": "text"
+				},
+				{
+					"key": "area",
+					"value": "86",
+					"type": "text"
+				},
+				{
+					"key": "flag",
+					"value": "2",
+					"type": "text"
+				}
+			],
+			"auth": null,
+			"events": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "49608b25-87d7-42a5-b9fd-d8866c43bcc0",
+						"type": "text/javascript",
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"",
+							"tests[\"Return code value: \"+ jsonData.code] = jsonData.code === 0"
+						]
+					}
+				}
+			],
+			"rawModeData": "",
+			"descriptionFormat": null,
+			"description": "获取验证码",
+			"variables": null,
+			"headers": "Content-Type: application/json\n: ",
+			"method": "POST",
+			"pathVariables": {},
+			"url": "{{url}}/api/send_code",
+			"queryParams": [],
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json"
+				},
+				{
+					"key": "",
+					"value": ""
+				}
+			],
+			"pathVariableData": [],
+			"collectionId": "86c66170-4a74-cbef-d218-1bdb20c50e72",
+			"preRequestScript": null,
+			"tests": "var jsonData = JSON.parse(responseBody);\n\ntests[\"Return code value: \"+ jsonData.code] = jsonData.code === 0",
+			"currentHelper": null,
+			"helperAttributes": null
+		},
+		{
+			"folder": null,
+			"id": "754f2e85-07d3-2450-e3ff-24b2e2910f84",
+			"name": "设置密码",
+			"dataMode": "params",
+			"data": [
+				{
+					"key": "old_password",
+					"value": "",
+					"type": "text"
+				},
+				{
+					"key": "password",
+					"value": "123456",
+					"type": "text"
+				}
+			],
+			"auth": null,
+			"events": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "ff3ef32a-fb0a-483d-b07e-47ffd67ace5f",
+						"type": "text/javascript",
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"",
+							"tests[\"Return code value: \"+ jsonData.code] = jsonData.code === 0"
+						]
+					}
+				}
+			],
+			"rawModeData": "",
+			"descriptionFormat": null,
+			"description": "设置密码",
+			"variables": null,
+			"headers": "Authorization: Token {{access_token}}",
+			"method": "POST",
+			"pathVariables": {},
+			"url": "{{url}}/api/reset_password",
+			"queryParams": [],
+			"headerData": [
+				{
+					"key": "Authorization",
+					"value": "Token {{access_token}}"
+				}
+			],
+			"pathVariableData": [],
+			"collectionId": "86c66170-4a74-cbef-d218-1bdb20c50e72",
+			"preRequestScript": null,
+			"tests": "var jsonData = JSON.parse(responseBody);\n\ntests[\"Return code value: \"+ jsonData.code] = jsonData.code === 0",
+			"currentHelper": null,
+			"helperAttributes": null
+		},
+		{
+			"folder": null,
+			"id": "84d115c8-bf57-e9cf-e277-8b0a6626db37",
+			"name": "获取用户信息",
+			"dataMode": null,
+			"data": [],
+			"auth": null,
+			"events": null,
+			"rawModeData": "",
+			"descriptionFormat": null,
+			"description": null,
+			"variables": null,
+			"headers": "Authorization: Token {{access_token}}",
+			"method": "GET",
+			"pathVariables": {},
+			"url": "{{url}}/api/user/info",
+			"queryParams": [],
+			"headerData": [
+				{
+					"key": "Authorization",
+					"value": "Token {{access_token}}"
+				}
+			],
+			"pathVariableData": [],
+			"collectionId": "86c66170-4a74-cbef-d218-1bdb20c50e72",
+			"currentHelper": null,
+			"helperAttributes": null
+		},
+		{
+			"folder": null,
+			"id": "91f5bd82-2424-b0f3-b0f9-c97c7948c948",
+			"name": "刷新token",
+			"dataMode": "raw",
+			"data": [],
+			"auth": null,
+			"events": null,
+			"descriptionFormat": null,
+			"description": null,
+			"variables": null,
+			"headers": "Content-Type: application/json\nAuthorization: Token 2f779b059818c16aaf46d61c61092b5cf9f3a14bf583e7f9e3f8f1fc551e",
+			"method": "POST",
+			"pathVariables": {},
+			"url": "{{url}}/api/refresh_token",
+			"queryParams": [],
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json"
+				},
+				{
+					"key": "Authorization",
+					"value": "Token 2f779b059818c16aaf46d61c61092b5cf9f3a14bf583e7f9e3f8f1fc551e"
+				}
+			],
+			"pathVariableData": [],
+			"collectionId": "86c66170-4a74-cbef-d218-1bdb20c50e72",
+			"currentHelper": null,
+			"helperAttributes": null,
+			"rawModeData": "{\"refresh_token\": \"{{refresh_token}}\"}"
+		},
+		{
+			"folder": null,
+			"id": "9976f20b-5a36-71d8-1fcc-f4c896a08f56",
+			"name": "发送验证码",
+			"dataMode": "params",
+			"data": [
+				{
+					"key": "account",
+					"value": "{{account}}",
+					"type": "text"
+				},
+				{
+					"key": "appid",
+					"value": "{{appid}}",
+					"type": "text"
+				},
+				{
+					"key": "area",
+					"value": "86",
+					"type": "text"
+				},
+				{
+					"key": "flag",
+					"value": "1",
+					"type": "text"
+				}
+			],
+			"auth": null,
+			"events": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "c2e45f86-417c-4427-a54f-5255503aef1b",
+						"type": "text/javascript",
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"",
+							"tests[\"Return code value: \"+ jsonData.code] = jsonData.code === 0"
+						]
+					}
+				}
+			],
+			"rawModeData": "",
+			"descriptionFormat": null,
+			"description": "获取验证码",
+			"variables": null,
+			"headers": "Content-Type: application/json\n: ",
+			"method": "POST",
+			"pathVariables": {},
+			"url": "{{url}}/api/send_code",
+			"queryParams": [],
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json"
+				},
+				{
+					"key": "",
+					"value": ""
+				}
+			],
+			"pathVariableData": [],
+			"collectionId": "86c66170-4a74-cbef-d218-1bdb20c50e72",
+			"preRequestScript": null,
+			"tests": "var jsonData = JSON.parse(responseBody);\n\ntests[\"Return code value: \"+ jsonData.code] = jsonData.code === 0",
+			"currentHelper": null,
+			"helperAttributes": null
+		},
+		{
+			"folder": null,
+			"id": "9c6ebcc6-2f82-fdeb-c9c4-78685954da9d",
+			"name": "获取token（快捷登陆）",
+			"dataMode": "params",
+			"data": [
+				{
+					"key": "account",
+					"value": "{{account}}",
+					"type": "text"
+				},
+				{
+					"key": "appid",
+					"value": "{{appid}}",
+					"type": "text"
+				},
+				{
+					"key": "code",
+					"value": "188309",
+					"type": "text"
+				}
+			],
+			"auth": null,
+			"events": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "6c94ad92-9147-447c-afdc-14cfb1c0fedb",
+						"type": "text/javascript",
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"postman.setEnvironmentVariable(\"access_token\", jsonData.data.access_token);",
+							"",
+							"tests[\"Status code is 200\"] = responseCode.code === 200;",
+							""
+						]
+					}
+				}
+			],
+			"rawModeData": "",
+			"descriptionFormat": null,
+			"description": null,
+			"variables": null,
+			"headers": "Content-Type: application/json",
+			"method": "POST",
+			"pathVariables": {},
+			"url": "{{url}}/api/access_token",
+			"queryParams": [],
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json"
+				}
+			],
+			"pathVariableData": [],
+			"collectionId": "86c66170-4a74-cbef-d218-1bdb20c50e72",
+			"preRequestScript": null,
+			"tests": "var jsonData = JSON.parse(responseBody);\npostman.setEnvironmentVariable(\"access_token\", jsonData.data.access_token);\n\ntests[\"Status code is 200\"] = responseCode.code === 200;\n",
+			"currentHelper": null,
+			"helperAttributes": null
+		},
+		{
+			"folder": null,
+			"id": "9f1284fc-5c79-c744-2759-8afdec1f4739",
+			"name": "校验验证码_所有参数为空",
+			"dataMode": "raw",
+			"data": [],
+			"auth": null,
+			"events": null,
+			"descriptionFormat": null,
+			"description": "校验验证码_所有参数为空",
+			"variables": null,
+			"headers": "Content-Type: application/json",
+			"method": "POST",
+			"pathVariables": {},
+			"url": "{{url}}/api/check_code",
+			"queryParams": [],
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json"
+				}
+			],
+			"pathVariableData": [],
+			"collectionId": "86c66170-4a74-cbef-d218-1bdb20c50e72",
+			"currentHelper": null,
+			"helperAttributes": null,
+			"rawModeData": "{\n  \"account\":\"\",\n  \"code\":\"\"\n}"
+		},
+		{
+			"folder": null,
+			"id": "c5616aae-69a1-a83e-7402-00aebc080d75",
+			"name": "销毁token",
+			"dataMode": "raw",
+			"data": [],
+			"auth": null,
+			"events": null,
+			"rawModeData": "",
+			"descriptionFormat": null,
+			"description": null,
+			"variables": null,
+			"headers": "Authorization: Token {{access_token}}",
+			"method": "POST",
+			"pathVariables": {},
+			"url": "{{url}}/api/destroy_token",
+			"queryParams": [],
+			"headerData": [
+				{
+					"key": "Authorization",
+					"value": "Token {{access_token}}"
+				}
+			],
+			"pathVariableData": [],
+			"collectionId": "86c66170-4a74-cbef-d218-1bdb20c50e72",
+			"currentHelper": null,
+			"helperAttributes": null
+		},
+		{
+			"id": "cc9a676a-b70b-af1e-552e-bb2d50ba9463",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://101.132.106.17:3080/api/accountdelete",
+			"queryParams": [],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"events": [],
+			"auth": null,
+			"method": "POST",
+			"collectionId": "86c66170-4a74-cbef-d218-1bdb20c50e72",
+			"data": [],
+			"dataMode": "raw",
+			"name": "accountdelete",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1536286157045,
+			"version": 2,
+			"responses": [],
+			"currentHelper": null,
+			"helperAttributes": null,
+			"rawModeData": "{\n\"appid\": \"mxchip\",\n\"account\": \"5182840532\",\n\"password\": \"111111\"\n}"
+		},
+		{
+			"folder": null,
+			"id": "f061fb5d-6c37-1142-bd8f-2e10f44e3c9a",
+			"name": "发送验证码_flag=2修改密码 copy",
+			"dataMode": "params",
+			"data": [
+				{
+					"key": "account",
+					"value": "{{account}}",
+					"type": "text"
+				},
+				{
+					"key": "appid",
+					"value": "{{appid}}",
+					"type": "text"
+				},
+				{
+					"key": "area",
+					"value": "86",
+					"type": "text"
+				},
+				{
+					"key": "flag",
+					"value": "2",
+					"type": "text"
+				}
+			],
+			"auth": null,
+			"events": null,
+			"rawModeData": "",
+			"descriptionFormat": null,
+			"description": "获取验证码",
+			"variables": null,
+			"headers": "Content-Type: application/json\n: ",
+			"method": "POST",
+			"pathVariables": {},
+			"url": "{{url}}/api/send_code",
+			"queryParams": [],
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json"
+				},
+				{
+					"key": "",
+					"value": ""
+				}
+			],
+			"pathVariableData": [],
+			"collectionId": "86c66170-4a74-cbef-d218-1bdb20c50e72",
+			"currentHelper": null,
+			"helperAttributes": null
+		}
+	]
+}
